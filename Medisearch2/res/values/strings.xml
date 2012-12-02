@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Medisearch2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_principal__tabs">Principal_Tabs</string>
+    <string name="title_activity_buscador_generico">BuscadorGenerico</string>
+    <string name="title_activity_buscador_medicamento__uso">BuscadorMedicamento_Uso</string>
+
+</resources>

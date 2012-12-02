@@ -1,0 +1,44 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MedicamentoORMWSService WSDL service -->
+
+  <service name="MedicamentoORMWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws"/>
+      <parameter name="wsdlServiceElement" value="MedicamentoORMWSService"/>
+      <parameter name="schemaQualified" value="http://ws,http://orm.org"/>
+      <parameter name="wsdlServicePort" value="MedicamentoORMWS"/>
+      <parameter name="className" value="ws.MedicamentoORMWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="MedicamentoORMWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getListaMedicamentos" qname="operNS:getListaMedicamentos" xmlns:operNS="http://ws" returnQName="retNS:getListaMedicamentosReturn" xmlns:retNS="http://ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="buscarMedicamento" qname="operNS:buscarMedicamento" xmlns:operNS="http://ws" returnQName="retNS:buscarMedicamentoReturn" xmlns:retNS="http://ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:prestacionJson" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <fault name="PersistentException" qname="fns:fault" xmlns:fns="http://ws" class="org.orm.PersistentException" type="tns:PersistentException" xmlns:tns="http://orm.org"/>
+      </operation>
+      <operation name="buscarGenericoPorUso" qname="operNS:buscarGenericoPorUso" xmlns:operNS="http://ws" returnQName="retNS:buscarGenericoPorUsoReturn" xmlns:retNS="http://ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:prestacionJson" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <fault name="PersistentException" qname="fns:fault" xmlns:fns="http://ws" class="org.orm.PersistentException" type="tns:PersistentException" xmlns:tns="http://orm.org"/>
+      </operation>
+      <parameter name="allowedMethods" value="getListaMedicamentos buscarMedicamento buscarGenericoPorUso"/>
+
+      <typeMapping
+        xmlns:ns="http://orm.org"
+        qname="ns:PersistentException"
+        type="java:org.orm.PersistentException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

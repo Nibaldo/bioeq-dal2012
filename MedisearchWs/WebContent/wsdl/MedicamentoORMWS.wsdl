@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:tns1="http://orm.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://orm.org"/>
+   <element name="getListaMedicamentos">
+    <complexType/>
+   </element>
+   <element name="getListaMedicamentosResponse">
+    <complexType>
+     <sequence>
+      <element name="getListaMedicamentosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarMedicamento">
+    <complexType>
+     <sequence>
+      <element name="prestacionJson" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarMedicamentoResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarMedicamentoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns1:PersistentException"/>
+   <element name="buscarGenericoPorUso">
+    <complexType>
+     <sequence>
+      <element name="prestacionJson" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarGenericoPorUsoResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarGenericoPorUsoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://orm.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="PersistentException">
+    <sequence/>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="buscarMedicamentoRequest">
+
+      <wsdl:part element="impl:buscarMedicamento" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaMedicamentosResponse">
+
+      <wsdl:part element="impl:getListaMedicamentosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarMedicamentoResponse">
+
+      <wsdl:part element="impl:buscarMedicamentoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarGenericoPorUsoRequest">
+
+      <wsdl:part element="impl:buscarGenericoPorUso" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarGenericoPorUsoResponse">
+
+      <wsdl:part element="impl:buscarGenericoPorUsoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaMedicamentosRequest">
+
+      <wsdl:part element="impl:getListaMedicamentos" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PersistentException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MedicamentoORMWS">
+
+      <wsdl:operation name="getListaMedicamentos">
+
+         <wsdl:input message="impl:getListaMedicamentosRequest" name="getListaMedicamentosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListaMedicamentosResponse" name="getListaMedicamentosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarMedicamento">
+
+         <wsdl:input message="impl:buscarMedicamentoRequest" name="buscarMedicamentoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarMedicamentoResponse" name="buscarMedicamentoResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarGenericoPorUso">
+
+         <wsdl:input message="impl:buscarGenericoPorUsoRequest" name="buscarGenericoPorUsoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarGenericoPorUsoResponse" name="buscarGenericoPorUsoResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MedicamentoORMWSSoapBinding" type="impl:MedicamentoORMWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getListaMedicamentos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListaMedicamentosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListaMedicamentosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarMedicamento">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarMedicamentoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarMedicamentoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarGenericoPorUso">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarGenericoPorUsoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarGenericoPorUsoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MedicamentoORMWSService">
+
+      <wsdl:port binding="impl:MedicamentoORMWSSoapBinding" name="MedicamentoORMWS">
+
+         <wsdlsoap:address location="http://localhost:8080/MedisearchWs/services/MedicamentoORMWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
